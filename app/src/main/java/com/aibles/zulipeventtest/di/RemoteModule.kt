@@ -1,6 +1,7 @@
 package com.aibles.zulipeventtest.di
 
 import com.aibles.zulipeventtest.api.AuthInterceptor
+import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,6 +14,14 @@ fun createRemoteModule(baseUrl: String) = module {
     }
 
     factory { AuthInterceptor() }
+
+    factory {
+        Gson()
+            .newBuilder()
+            .serializeNulls()
+            .create()
+    }
+
 
     factory {
         OkHttpClient.Builder().addInterceptor(get<HttpLoggingInterceptor>())
