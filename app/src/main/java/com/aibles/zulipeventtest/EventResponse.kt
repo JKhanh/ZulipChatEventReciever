@@ -1,11 +1,13 @@
 package com.aibles.zulipeventtest
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
-data class MessageEvent(
+data class EventResponse(
     var result: String,
     var msg: String?,
-    @SerializedName("events") var messages: List<MessageResponse>?,
+    @SerializedName("events") var events: List<Objects>?,
     var type: String,
     @SerializedName("queue_id") var queueId: String
-)
+) {
+}

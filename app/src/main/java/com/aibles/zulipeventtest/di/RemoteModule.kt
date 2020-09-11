@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 fun createRemoteModule(baseUrl: String) = module {
     factory {
@@ -32,6 +33,7 @@ fun createRemoteModule(baseUrl: String) = module {
         Retrofit.Builder()
             .client(get())
             .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(get()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
