@@ -1,7 +1,6 @@
 package com.aibles.zulipeventtest
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,8 +29,6 @@ class ChatFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.registerEvent(EventRegister("message", true, null))
-        Log.d("QueueID: ", viewModel.queueId)
-
         val adapter = MessageAdapter()
         binding.messageList.adapter = adapter
         binding.messageList.layoutManager = LinearLayoutManager(context)
